@@ -14,7 +14,7 @@ const fs = require('fs');
 // Extract version from VERSION
 let version;
 try {
-  [, version] = process.env.VERSION.match(/v(.+)/)
+  [, version] = process.env.VERSION.match(/v?(.+)/)
 } catch (err) {
   console.error(`Can not extract version from VERSION (${process.env.VERSION})`);
   console.error(err);
