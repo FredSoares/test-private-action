@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Remove 'v' prefix from VERSION if it exists
+VERSION=${VERSION#v}
+
 # The script builds the package and publishes it to npm.
 #
 # It's the entry point for the release process.
@@ -7,7 +10,7 @@
 set -e
 
 # A pre-release is a version with a label i.e. v2.0.0-alpha.1
-if [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
+if [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
 then
   IS_PRE_RELEASE=true
 else
