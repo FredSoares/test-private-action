@@ -1,17 +1,21 @@
-name: My Public Workflow
+name: Deploy to NPM
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [created]
 
 jobs:
-  my_job:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - uses: FredSoares/private-action-repo-test@v1.0.0
-        with:
-          private-action-token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Run release script
+      run: ./scripts/release/release.sh
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
