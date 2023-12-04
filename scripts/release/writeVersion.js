@@ -8,8 +8,8 @@
  * It's a part of the release process.
  */
 
-import path from 'path';
-import fs from 'fs';
+const path = require('path');
+const fs = require('fs');
 
 // Extract version from VERSION
 let version;
