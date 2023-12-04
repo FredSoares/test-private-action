@@ -20,6 +20,10 @@ jobs:
         git config --local user.email "less-ci@github.com"
         git config --local user.name "GitHub Action"
 
+    - name: Check out branch
+      run: |
+        git checkout main
+
     - name: Run release script
       run: ./scripts/release/release.sh
       env:
