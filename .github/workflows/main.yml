@@ -15,6 +15,11 @@ jobs:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
 
+    - name: Set git user
+      run: |
+        git config --local user.email "less-ci@github.com"
+        git config --local user.name "GitHub Action"
+
     - name: Run release script
       run: ./scripts/release/release.sh
       env:
