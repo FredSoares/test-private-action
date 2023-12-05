@@ -29,13 +29,13 @@ git push
 cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
-  npm ci
-  npm publish --tag next
+  yarn
+  yarn publish --tag next
   echo "NPM authToken=$NPM_TOKEN"
   echo "npm publish --tag next"
 else
-  npm ci
-  npm publish
+  yarn
+  yarn publish
   echo "NPM authToken=$NPM_TOKEN"
   echo "npm publish"
 fi
