@@ -25,7 +25,7 @@ git tag -a "$VERSION" -m "$VERSION"
 git push
 
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
-# echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
