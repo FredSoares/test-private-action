@@ -21,8 +21,6 @@ try {
   process.exit(1);
 }
 
-console.log(`Version: ${version}`);
-
 console.log('Writing to package.json...');
 const packagePath = path.join(process.cwd(), 'package.json');
 const packageContent = JSON.parse(fs.readFileSync(packagePath).toString());
