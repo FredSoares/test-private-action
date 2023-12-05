@@ -26,6 +26,7 @@ git push
 
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+cat ~/.npmrc
 cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
