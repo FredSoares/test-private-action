@@ -24,22 +24,20 @@ git commit -m "Prepare $VERSION"
 git tag -a "$VERSION" -m "$VERSION"
 git push
 
-# Build the package
-# PACKAGE_PATH="$(pwd)/../../tmp/package"
-# env PACKAGE_OUTPUT_PATH="$PACKAGE_PATH" ./scripts/build/package.sh
-
 # Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
-echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+# echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
 cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
-#   npm publish --tag next
-    echo "NPM authToken=$NPM_TOKEN"
-    echo "npm publish --tag next"
+  npm ci
+  npm publish --tag next
+  echo "NPM authToken=$NPM_TOKEN"
+  echo "npm publish --tag next"
 else
-#   npm publish
-    echo "NPM authToken=$NPM_TOKEN"
-    echo "npm publish"
+  npm ci
+  npm publish
+  echo "NPM authToken=$NPM_TOKEN"
+  echo "npm publish"
 fi
 cd - || exit
 
