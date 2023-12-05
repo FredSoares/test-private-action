@@ -1,5 +1,5 @@
 {
-  "name": "test-private-action",
+  "name": "hello-github-action",
   "version": "1.0.0-beta.12",
   "description": "",
   "main": "index.js",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/FredSoares/test-private-action/issues"
   },
-  "homepage": "https://github.com/FredSoares/test-private-action#readme"
+  "homepage": "https://github.com/FredSoares/test-private-action#readme",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  }
 }

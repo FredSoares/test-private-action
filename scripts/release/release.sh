@@ -30,14 +30,14 @@ cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
   yarn
-  yarn publish --tag next
+  yarn publish --tag next --access=public
   echo "NPM authToken=$NPM_TOKEN"
-  echo "npm publish --tag next"
+  echo "npm publish --tag next --access=public"
 else
   yarn
-  yarn publish
+  yarn publish --access=public
   echo "NPM authToken=$NPM_TOKEN"
-  echo "npm publish"
+  echo "npm publish --access=public"
 fi
 cd - || exit
 
