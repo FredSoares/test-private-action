@@ -32,14 +32,15 @@ if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
     yarn publish --access=public
   fi
 
-  # Generate release notes from git commits
-  RELEASE_NOTES=$(git log --pretty=format:"* %s" "$OLD_VERSION".."$NEW_VERSION")
-  echo "Release Notes for $NEW_VERSION:" > RELEASE_NOTES.md
-  echo "$RELEASE_NOTES" >> RELEASE_NOTES.md
-
   # Create a new tag and release on GitHub
+  git fetch --tags
   git tag -a "v$NEW_VERSION" -m "Release $NEW_VERSION"
   git push origin "v$NEW_VERSION"
+
+  # Generate release notes from git commits
+  RELEASE_NOTES=$(git log --pretty=format:"* %s" "v$OLD_VERSION".."v$NEW_VERSION")
+  echo "Release Notes for $NEW_VERSION:" > RELEASE_NOTES.md
+  echo "$RELEASE_NOTES" >> RELEASE_NOTES.md
   gh release create "v$NEW_VERSION" --title "Release $NEW_VERSION" --notes-file RELEASE_NOTES.md
 
 else
