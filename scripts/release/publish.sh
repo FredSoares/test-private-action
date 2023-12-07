@@ -3,7 +3,7 @@
 set -e
 
 # Install dependencies
-npm install
+yarn
 
 # Get version before merge
 OLD_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
@@ -27,7 +27,6 @@ if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
     yarn
     yarn publish --access=public
   fi
-  npm publish --access public
 else
   echo "Version did not change."
 fi
